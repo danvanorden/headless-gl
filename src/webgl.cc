@@ -51,6 +51,7 @@ WebGL::WebGL(int width, int height) :
       AGL_RGBA,
       AGL_DOUBLEBUFFER,
       AGL_PIXEL_SIZE, 32,
+      AGL_DEPTH_SIZE, 16,
       AGL_ACCELERATED,
       AGL_NONE
     };
