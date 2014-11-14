@@ -588,6 +588,8 @@ static void init(Handle<Object> target)
 #ifndef __APPLE__
   //JS_GL_CONSTANT(RGB565);
 #endif
+  /* TODO: add correct conditional for multisampling */
+  JS_GL_CONSTANT(MULTISAMPLE_ARB);
   JS_GL_CONSTANT(DEPTH_COMPONENT16);
   JS_GL_CONSTANT(DEPTH_COMPONENT24);
   JS_GL_CONSTANT(DEPTH_COMPONENT32);
