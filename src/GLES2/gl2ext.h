@@ -49,6 +49,12 @@ extern "C" {
 #define GL_DEPTH_COMPONENT32_OES                                0x81A7
 #endif
 
+/* TODO: Temp Addition: Find a better way to define these constants for use in server rendering. */
+#define GL_DEPTH_COMPONENT24_OES 0x81A6
+#define GL_DEPTH_COMPONENT32_OES 0x81A7
+#define GL_DEPTH_COMPONENT24     GL_DEPTH_COMPONENT24_OES
+#define GL_DEPTH_COMPONENT32     GL_DEPTH_COMPONENT32_OES
+
 /* GL_OES_depth_texture */
 /* No new tokens introduced by this extension. */
 
