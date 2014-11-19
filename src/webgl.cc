@@ -224,7 +224,7 @@ void WebGL::disposeAll() {
 Handle<Value> WebGL::New(const Arguments& args) {
   HandleScope scope;
   
-  WebGL* instance = new WebGL(args[0]->Int32Value(), args[1]->Int32Value());
+  WebGL* instance = new WebGL(args[0]->Int32Value(), args[1]->Int32Value(), args[2]->Int32Value());
   if(!instance->initialized) {
     return ThrowError("Error creating WebGLContext");
   }
