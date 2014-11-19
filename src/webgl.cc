@@ -40,7 +40,7 @@ WebGL*  active_context = NULL;
 // Context creation and object management
 ////////////////////////////////////////////////////////////////////////
 
-WebGL::WebGL(int width, int height) :
+WebGL::WebGL(int width, int height, int depthSize) :
   initialized(false),
   atExit(false) {
   
@@ -51,7 +51,7 @@ WebGL::WebGL(int width, int height) :
       AGL_RGBA,
       AGL_DOUBLEBUFFER,
       AGL_PIXEL_SIZE, 32,
-      AGL_DEPTH_SIZE, 32,
+      AGL_DEPTH_SIZE, depthSize,
       AGL_SAMPLE_BUFFERS_ARB, 1,
       AGL_SAMPLES_ARB, 4,
       AGL_ACCELERATED,

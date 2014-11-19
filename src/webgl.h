@@ -56,7 +56,7 @@ public:
   static void disposeAll();
   
   //Constructor/destructor
-  WebGL(int width, int height);
+  WebGL(int width, int height, int depthSize);
   virtual ~WebGL();
   
   JS_METHOD(New);
