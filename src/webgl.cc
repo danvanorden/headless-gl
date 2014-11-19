@@ -50,7 +50,7 @@ WebGL::WebGL(int width, int height) :
     GLint pixelAttr[] = {
       AGL_RGBA,
       AGL_PIXEL_SIZE, 32,
-      AGL_DEPTH_SIZE, 16,
+      AGL_DEPTH_SIZE, 32,
       AGL_NONE
     };
   
