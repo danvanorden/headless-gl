@@ -27,6 +27,6 @@ var WebGLContext = require("./webgl.js");
 })();
 
 
-module.exports.createContext = function(width, height) {
-    return new WebGLContext(width, height);
+module.exports.createContext = function(width, height, depthSize) {
+    return new WebGLContext(width, height, depthSize);
 }
