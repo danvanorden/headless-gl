@@ -48,13 +48,7 @@ WebGL::WebGL(int width, int height) :
   
     //Create AGL context
     GLint pixelAttr[] = {
-      AGL_RGBA,
-      AGL_DOUBLEBUFFER,
-      AGL_PIXEL_SIZE, 32,
-      AGL_DEPTH_SIZE, 32,
-      AGL_SAMPLE_BUFFERS_ARB, 1,
-      AGL_SAMPLES_ARB, 4,
-      AGL_ACCELERATED,
+      AGL_DEPTH_SIZE, 16,
       AGL_NONE
     };
   
