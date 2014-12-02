@@ -719,6 +719,32 @@ gl.renderbufferStorage = function renderbufferStorage(target, internalformat, wi
   return _renderbufferStorage.call(this, target, internalformat, width, height);
 }
 
+var _renderbufferStorageMultisample = gl.renderbufferStorageMultisample;
+gl.renderbufferStorageMultisample = function renderbufferStorageMultisample(target, samples, internalformat, width, height) {
+  if (!(arguments.length === 5 && typeof target === "number" && typeof samples === "number" && typeof internalformat === "number" && typeof width === "number" && typeof height === "number")) {
+    throw new TypeError('Expected renderbufferStorageMultisample(number target, number samples, number internalformat, number width, number height)');
+  }
+  return _renderbufferStorageMultisample.call(this, target, samples, internalformat, width, height);
+}
+
+var _blitFramebuffer = gl.blitFramebuffer;
+gl.blitFramebuffer = function blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter) {
+  if (!(arguments.length === 10 &&
+    typeof srcX0 === "number" &&
+    typeof srcY0 === "number" &&
+    typeof srcX1 === "number" &&
+    typeof srcY1 === "number" &&
+    typeof dstX0 === "number" &&
+    typeof dstY0 === "number" &&
+    typeof dstX1 === "number" &&
+    typeof dstY1 === "number" &&
+    typeof mask === "number" &&
+    typeof filter === "number")) {
+    throw new TypeError('Expected blitFramebuffer(number srcX0, number srcY0, number srcX1, number srcY1, number dstX0, number dstY0, number dstX1, number dstY1, number mask, number filter)');
+  }
+  return _blitFramebuffer.call(this, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+}
+
 var _sampleCoverage = gl.sampleCoverage;
 gl.sampleCoverage = function sampleCoverage(value, invert) {
   if (!(arguments.length === 2 && typeof value === "number" && typeof invert === "boolean")) {

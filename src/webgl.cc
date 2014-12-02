@@ -40,7 +40,7 @@ WebGL*  active_context = NULL;
 // Context creation and object management
 ////////////////////////////////////////////////////////////////////////
 
-WebGL::WebGL(int width, int height, int depthSize) :
+WebGL::WebGL(int width, int height, int depthSize, int msaaSamples) :
   initialized(false),
   atExit(false) {
   
@@ -49,11 +49,12 @@ WebGL::WebGL(int width, int height, int depthSize) :
     //Create AGL context
     GLint pixelAttr[] = {
       AGL_RGBA,
-      AGL_DOUBLEBUFFER,
+      AGL_DOUBLEBUFFER, GL_FALSE,
+      AGL_MULTISAMPLE,
       AGL_PIXEL_SIZE, 32,
       AGL_DEPTH_SIZE, depthSize,
       AGL_SAMPLE_BUFFERS_ARB, 1,
-      AGL_SAMPLES_ARB, 4,
+      AGL_SAMPLES_ARB, msaaSamples,
       AGL_ACCELERATED,
       AGL_NONE
     };
@@ -224,7 +225,7 @@ void WebGL::disposeAll() {
 Handle<Value> WebGL::New(const Arguments& args) {
   HandleScope scope;
   
-  WebGL* instance = new WebGL(args[0]->Int32Value(), args[1]->Int32Value(), args[2]->Int32Value());
+  WebGL* instance = new WebGL(args[0]->Int32Value(), args[1]->Int32Value(), args[2]->Int32Value(), args[3]->Int32Value());
   if(!instance->initialized) {
     return ThrowError("Error creating WebGLContext");
   }
@@ -1553,6 +1554,39 @@ JS_METHOD(RenderbufferStorage) {
   GLsizei height = args[3]->Uint32Value();
 
   glRenderbufferStorage(target, internalformat, width, height);
+  return scope.Close(Undefined());
+}
+
+JS_METHOD(RenderbufferStorageMultisample) {
+  JS_BOILERPLATE
+
+  GLenum target = args[0]->Int32Value();
+  GLsizei samples = args[1]->Int32Value();
+  GLenum internalformat = args[2]->Int32Value();
+  GLsizei width = args[3]->Uint32Value();
+  GLsizei height = args[4]->Uint32Value();
+
+  glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
+  return scope.Close(Undefined());
+}
+
+JS_METHOD(BlitFramebuffer) {
+  JS_BOILERPLATE
+
+  GLint srcX0 = args[0]->Int32Value();
+  GLint srcY0 = args[1]->Int32Value();
+  GLint srcX1 = args[2]->Int32Value();
+  GLint srcY1 = args[3]->Int32Value();
+  GLint dstX0 = args[4]->Int32Value();
+  GLint dstY0 = args[5]->Int32Value();
+  GLint dstX1 = args[6]->Int32Value();
+  GLint dstY1 = args[7]->Int32Value();
+
+  GLbitfield mask = args[8]->Uint32Value();
+  GLenum filter   = args[9]->Uint32Value();
+
+  glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+
   return scope.Close(Undefined());
 }
 

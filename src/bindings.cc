@@ -157,6 +157,8 @@ static void init(Handle<Object> target)
   NODE_SET_PROTOTYPE_METHOD(webgl_template, "isTexture", WebGL::IsTexture);
 
   NODE_SET_PROTOTYPE_METHOD(webgl_template, "renderbufferStorage", WebGL::RenderbufferStorage);
+  NODE_SET_PROTOTYPE_METHOD(webgl_template, "renderbufferStorageMultisample", WebGL::RenderbufferStorageMultisample);
+  NODE_SET_PROTOTYPE_METHOD(webgl_template, "blitFramebuffer", WebGL::BlitFramebuffer);
   NODE_SET_PROTOTYPE_METHOD(webgl_template, "getShaderSource", WebGL::GetShaderSource);
   NODE_SET_PROTOTYPE_METHOD(webgl_template, "validateProgram", WebGL::ValidateProgram);
 
@@ -581,6 +583,8 @@ static void init(Handle<Object> target)
 
   /* Framebuffer Object. */
   JS_GL_CONSTANT(FRAMEBUFFER);
+  JS_GL_CONSTANT(READ_FRAMEBUFFER);
+  JS_GL_CONSTANT(DRAW_FRAMEBUFFER);
   JS_GL_CONSTANT(RENDERBUFFER);
 
   JS_GL_CONSTANT(RGBA4);

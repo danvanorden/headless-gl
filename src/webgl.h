@@ -56,7 +56,7 @@ public:
   static void disposeAll();
   
   //Constructor/destructor
-  WebGL(int width, int height, int depthSize);
+  WebGL(int width, int height, int depthSize, int msaaSamples);
   virtual ~WebGL();
   
   JS_METHOD(New);
@@ -180,6 +180,9 @@ public:
   JS_METHOD(IsTexture);
 
   JS_METHOD(RenderbufferStorage);
+  JS_METHOD(RenderbufferStorageMultisample);
+  JS_METHOD(BlitFramebuffer);
+
   JS_METHOD(GetShaderSource);
   JS_METHOD(ValidateProgram);
 
