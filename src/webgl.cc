@@ -83,7 +83,18 @@ WebGL::WebGL(int width, int height, int depthSize, int msaaSamples) :
     
     display = XOpenDisplay(0);
 
-    static int attributeList[] = { GLX_RGBA, GLX_DOUBLEBUFFER, GLX_DEPTH_SIZE, depthSize, GLX_RED_SIZE, 1, GLX_GREEN_SIZE, 1, GLX_BLUE_SIZE, 1, None };
+    static int attributeList[] = {
+          GLX_RGBA,
+          GLX_DOUBLEBUFFER,
+          GLX_DEPTH_SIZE, depthSize,
+          GLX_RED_SIZE, 1,
+          GLX_GREEN_SIZE, 1,
+          GLX_BLUE_SIZE, 1,
+          GLX_SAMPLES_ARB, msaaSamples,
+          GLX_SAMPLE_BUFFERS_ARB, 1,
+          None
+        };
+
     XVisualInfo *vi = glXChooseVisual(display, DefaultScreen(display),attributeList);
    
     //oldstyle context:
